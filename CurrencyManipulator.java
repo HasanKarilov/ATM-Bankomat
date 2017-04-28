@@ -40,4 +40,8 @@ public class CurrencyManipulator {
         }
         return total;
     }
+
+    public boolean hasMoney(){
+        return denominations.size() != 0;
+    }
 }

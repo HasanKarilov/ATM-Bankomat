@@ -1,5 +1,7 @@
 package com.javarush.task.task26.task2613;
 
+import com.javarush.task.task26.task2613.command.CommandExecutor;
+
 import java.util.Locale;
 
 
@@ -7,13 +9,11 @@ public class CashMachine
 {
     public static void main(String[] args) {
         Locale.setDefault(Locale.ENGLISH);
+        Operation operation;
+        do{
+            operation = ConsoleHelper.askOperation();
+            CommandExecutor.execute(operation);
 
-        String code = ConsoleHelper.askCurrencyCode();
-        String[] digits = ConsoleHelper.getValidTwoDigits(code);
-        CurrencyManipulator currencyManipulator = CurrencyManipulatorFactory.getManipulatorByCurrencyCode(code);
-        currencyManipulator.addAmount(Integer.parseInt(digits[0]), Integer.parseInt(digits[1]));
-        ConsoleHelper.writeMessage(String.valueOf(currencyManipulator.getTotalAmount()));
-
-
+        }while (operation != Operation.EXIT);
     }
 }
