@@ -7,7 +7,7 @@ public class CashMachine
 {
     public static void main(String[] args) {
         Locale.setDefault(Locale.ENGLISH);
-//
+
         String code = ConsoleHelper.askCurrencyCode();
         String[] digits = ConsoleHelper.getValidTwoDigits(code);
         CurrencyManipulator currencyManipulator = CurrencyManipulatorFactory.getManipulatorByCurrencyCode(code);
