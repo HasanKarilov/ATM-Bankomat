@@ -65,4 +65,17 @@ public class ConsoleHelper {
         return nominalAndQuantity;
     }
 
+    public static Operation askOperation(){
+
+        while (true){
+            writeMessage("Choose operation 1 INFO, 2 - DEPOSIT, 3 - WITHDRAW, 4 - EXIT");
+            try {
+                return Operation.getAllowableOperationByOrdinal(Integer.parseInt(readString()));
+            }
+            catch (IllegalArgumentException e){
+
+            }
+        }
+    }
+
 }
