@@ -4,6 +4,7 @@ package com.javarush.task.task26.task2613;
  * Created by hanaria on 4/28/17.
  */
 public enum Operation {
+    LOGIN,
     INFO,
     DEPOSIT,
     WITHDRAW,
@@ -11,6 +12,7 @@ public enum Operation {
 
     public static Operation getAllowableOperationByOrdinal(Integer i){
         switch (i){
+            case 0: throw new IllegalArgumentException();
             case 1: return Operation.INFO;
             case 2: return Operation.DEPOSIT;
             case 3: return Operation.WITHDRAW;
