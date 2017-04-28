@@ -20,5 +20,6 @@ public class CashMachine
         }catch (InterruptOperationException e){
             ConsoleHelper.writeMessage("Bye!!!");
         }
+
     }
 }

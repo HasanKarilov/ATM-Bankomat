@@ -1,27 +1,41 @@
 package com.javarush.task.task26.task2613.command;
 
+import com.javarush.task.task26.task2613.CashMachine;
 import com.javarush.task.task26.task2613.ConsoleHelper;
 import com.javarush.task.task26.task2613.exception.InterruptOperationException;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 public class LoginCommand implements Command {
+    private ResourceBundle validCreditCards = ResourceBundle.getBundle(CashMachine.class.getPackage().getName() + ".resources." + "verifiedCards", Locale.ENGLISH);
+    private String card, pin;
+
     @Override
-    public void execute() throws InterruptOperationException {
-        String login = "", password = "";
-        while(true){
-            ConsoleHelper.writeMessage("Please enter login: ");
-            login = ConsoleHelper.readString();
-            ConsoleHelper.writeMessage("Please enter password: ");
-            password = ConsoleHelper.readString();
-            if(login.length() == 12 && password.length() == 4)
+    public void execute() throws InterruptOperationException
+    {
+        while (true)
+        {
+            try
             {
-                if(login.equals("123456789012") && password.equals("1234")){
-                    ConsoleHelper.writeMessage("Login success!");
-                    break;
-                }
-                else ConsoleHelper.writeMessage("Invalid data");
+                ConsoleHelper.writeMessage("Input credit card number");
+                card = ConsoleHelper.readString();
+                ConsoleHelper.writeMessage("Input credit card pin code");
+                pin = ConsoleHelper.readString();
+            }
+            catch (IllegalArgumentException e){
 
             }
-            else ConsoleHelper.writeMessage("login =12 & password = 4");
+
+            if(validCreditCards.containsKey(card))
+            {
+                if(validCreditCards.getString(card).equals(pin))
+                {
+                    ConsoleHelper.writeMessage("Verification success!");
+                    break;
+                }
+            }
+            ConsoleHelper.writeMessage("Invalid card values");
         }
     }
 }
