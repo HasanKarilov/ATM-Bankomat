@@ -8,7 +8,7 @@ class ExitCommand implements Command {
     public void execute() throws InterruptOperationException {
         ConsoleHelper.writeMessage("Do yout want to exit <y, n>");
         if(ConsoleHelper.readString().equals("y")){
-            ConsoleHelper.writeMessage("Goog buy!");
+            ConsoleHelper.writeMessage("Good buy!");
         }
     }
 }
