@@ -28,4 +28,16 @@ public class CurrencyManipulator {
         }
         else denominations.put(denomination, count);
     }
+    /**
+     * посчитает общую сумму денег для выбранной валюты
+     * @return
+     */
+    public int getTotalAmount(){
+        int total = 0;
+        for(Map.Entry<Integer, Integer> entry: denominations.entrySet())
+        {
+            total = total + ( entry.getKey() * entry.getValue());
+        }
+        return total;
+    }
 }
